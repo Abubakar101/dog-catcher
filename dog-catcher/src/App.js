@@ -22,7 +22,6 @@ class App extends Component {
 
   componentDidMount() {
     axios("https://dog.ceo/api/breeds/list").then(res => {
-      // console.log(res.data.message);
       this.setState({
         breedNames: res.data.message
       });
@@ -33,10 +32,7 @@ class App extends Component {
     let breedNamesLength = this.state.breedNames.length;
     let randomNumber = Math.floor(breedNamesLength * Math.random());
     let tmpBreedName = this.state.breedNames[randomNumber];
-
     this.handleSubmitListener(tmpBreedName);
-
-    // console.log(this.state.inputField, "tmpbreed");
   }
 
   handleInputListener(event) {
@@ -47,15 +43,23 @@ class App extends Component {
   }
 
   handleSubmitListener(value) {
-    axios(`https://dog.ceo/api/breed/${value}/images`).then(res => {
-      // console.log(res.data.message[0]);
-      this.setState({
-        breedData: [
-          { name: value, images: res.data.message[0] },
-          ...this.state.breedData
-        ]
+    value = value.toLowerCase();
+    if (this.state.breedNames.includes(value)) {
+      axios(`https://dog.ceo/api/breed/${value}/images`).then(res => {
+        this.setState({
+          breedData: [
+            { name: value, images: res.data.message[0] },
+            ...this.state.breedData
+          ]
+        });
       });
-    });
+    } else {
+      alert(`Please type a correct Breed Name! 
+            i.e., "african", Collie, Coonhound, Cairn & etc 
+            
+            Or Click on "Catch a Random Breed!!"
+            `);
+    }
   }
 
   // Delete Breed
@@ -77,14 +81,16 @@ class App extends Component {
     console.log(this.state.breedData, "Breed Data");
     return (
       <div className="dogContainer">
-      <h1 className="MainTitle">Dog Catcher</h1>  
+        <h1 className="MainTitle">Dog Catcher</h1>
         <InputForm
           inputField={this.state.inputField}
           handleChange={this.handleInputListener}
           handleSubmit={this.handleSubmitListener}
         />
 
-        <button className="randomBreedBtn" onClick={this.randomBreed}>+ Catch A Random Breed</button>
+        <button className="randomBreedBtn" onClick={this.randomBreed}>
+          + Catch A Random Breed
+        </button>
 
         <BreedFeed data={this.state.breedData} destroy={this.deleteBreed} />
       </div>

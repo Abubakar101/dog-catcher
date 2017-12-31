@@ -61,16 +61,21 @@ class App extends Component {
   }
 
   // Delete Breed
-  deleteBreed(id) {
-    let del = this.state.breedData;
-    delete del[id];
-    // window.location.reload();
-    // console.log("del", del);
-
-    this.setState({
-      breedData: del
-    });
+  deleteBreed(e, id) {
+    if (e.target.value === "deleteBreed") {
+      let del = this.state.breedData;
+      delete del[id];
+      this.setState({
+        breedData: del
+      });
+    } else {
+      this.setState({
+        breedData: []
+      });
+    }
   }
+
+  // Delete All Breeds
 
   render() {
     console.log(this.state.breedData, "Breed Data");
@@ -82,9 +87,7 @@ class App extends Component {
           handleSubmit={this.handleSubmitListener}
         />
 
-        <button onClick={this.randomBreed} type="submit" value="submit">
-          + Catch A Random Breed
-        </button>
+        <button onClick={this.randomBreed}>+ Catch A Random Breed</button>
 
         <BreedFeed data={this.state.breedData} destroy={this.deleteBreed} />
       </div>

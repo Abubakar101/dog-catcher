@@ -5,27 +5,36 @@ class BreedFeed extends Component {
     console.log(this.props.data);
     return (
       <div className="breeds">
-        <button onClick={(e)=>{this.props.destroy(e)}} value="clearAll">
-          X Clear All
-        </button>
+      <div className="midTopContainer">
+      <h2 className="subTitle">Caught Breeds</h2>
+      <button className="clearBtn" onClick={(e)=>{this.props.destroy(e)}} value="clearAll">
+      X Clear All
+    </button>
+      </div>
+
+      <div className="breedInfoContainer">
         {this.props.data.map((breed, i) => {
           return (
-            <div key={i}>
-              <button
-                className="destroyBtn"
-                onClick={e => {
-                  this.props.destroy(e,i);
-                }}
-                value="deleteBreed"
-              >
-                x
-              </button>
-
-              {breed.images}
-              {breed.name}
-            </div>
-          );
-        })}
+            <div className="breedInfoBox" key={i}>
+            <div className="breedInfoTop">
+            <div className="breedImages">
+            <img scr={breed.images} alt="" />
+            <button
+              className="destroyBtn"
+              onClick={e => {
+                this.props.destroy(e,i);
+              }}
+              value="deleteBreed"
+            >
+              x
+            </button>
+                </div>
+                </div>
+             <p className="breedName"> {breed.name} </p>
+              </div>
+            );
+          })}
+          </div>
       </div>
     );
   }

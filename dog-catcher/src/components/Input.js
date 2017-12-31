@@ -12,7 +12,6 @@ class InputForm extends Component {
       >
         <input
           type="text"
-        //   value={this.props.inputField}
           name="breed_text"
           placeholder="Find a breed to catch"
           onChange={this.props.handleChange}

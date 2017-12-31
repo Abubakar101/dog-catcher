@@ -77,13 +77,14 @@ class App extends Component {
     console.log(this.state.breedData, "Breed Data");
     return (
       <div className="dogContainer">
+      <h1 className="MainTitle">Dog Catcher</h1>  
         <InputForm
           inputField={this.state.inputField}
           handleChange={this.handleInputListener}
           handleSubmit={this.handleSubmitListener}
         />
 
-        <button onClick={this.randomBreed}>+ Catch A Random Breed</button>
+        <button className="randomBreedBtn" onClick={this.randomBreed}>+ Catch A Random Breed</button>
 
         <BreedFeed data={this.state.breedData} destroy={this.deleteBreed} />
       </div>

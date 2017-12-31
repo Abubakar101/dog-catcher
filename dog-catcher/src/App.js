@@ -50,12 +50,10 @@ class App extends Component {
     axios(`https://dog.ceo/api/breed/${value}/images`).then(res => {
       // console.log(res.data.message[0]);
       this.setState({
-        breedData: this.state.breedData.concat([
-          {
-            name: value,
-            images: res.data.message[0]
-          }
-        ])
+        breedData: [
+          { name: value, images: res.data.message[0] },
+          ...this.state.breedData
+        ]
       });
     });
   }
@@ -74,8 +72,6 @@ class App extends Component {
       });
     }
   }
-
-  // Delete All Breeds
 
   render() {
     console.log(this.state.breedData, "Breed Data");

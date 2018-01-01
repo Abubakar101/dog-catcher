@@ -1,5 +1,5 @@
 # SCOIR Technical Interview for Front-End Engineers
-###Dog Catcher
+### Dog Catcher
 
 ## Instructions
 1. Fork and clone this repo.

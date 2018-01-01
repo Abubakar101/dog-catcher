@@ -10,16 +10,16 @@ class App extends Component {
 
     this.state = {
       breedNames: [],
-      inputField: "",
       breedData: []
     };
 
-    this.handleInputListener = this.handleInputListener.bind(this);
     this.handleSubmitListener = this.handleSubmitListener.bind(this);
     this.randomBreed = this.randomBreed.bind(this);
     this.deleteBreed = this.deleteBreed.bind(this);
   }
 
+  // Get all the Breed names from API
+  // Set state for later use
   componentDidMount() {
     axios("https://dog.ceo/api/breeds/list").then(res => {
       this.setState({
@@ -28,6 +28,7 @@ class App extends Component {
     });
   }
 
+  // Random breed and then pass it to API call function - handleSubmitListener()
   randomBreed() {
     let breedNamesLength = this.state.breedNames.length;
     let randomNumber = Math.floor(breedNamesLength * Math.random());
@@ -35,14 +36,12 @@ class App extends Component {
     this.handleSubmitListener(tmpBreedName);
   }
 
-  handleInputListener(event) {
-    this.setState({
-      inputField: event[0]
-    });
-  }
-
+  // Call API dog.ceo with the breed name to get picture
   handleSubmitListener(value) {
-    value = value.toLowerCase();
+    value = value
+      .split(" ")
+      .join("")
+      .toLowerCase();
     if (this.state.breedNames.includes(value)) {
       axios(`https://dog.ceo/api/breed/${value}/images`).then(res => {
         this.setState({
@@ -53,12 +52,8 @@ class App extends Component {
         });
       });
     } else {
-      alert(`Please type a correct Breed Name! 
-            i.e., "african", Collie, Coonhound, Cairn & etc 
-            
-            Or Click on "Catch a Random Breed!!"
-            
-            P.S. No after-Spaces`);
+      alert(`Please type a correct Breed Name!             
+            Or Click on "Catch a Random Breed!!"`);
     }
   }
 
@@ -78,14 +73,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.breedData, "Breed Data");
     return (
       <div className="dogContainer">
         <h1 className="MainTitle">Dog Catcher</h1>
         <InputForm
           breedNames={this.state.breedNames}
-          inputField={this.state.inputField}
-          handleChange={this.handleInputListener}
           handleSubmit={this.handleSubmitListener}
         />
 

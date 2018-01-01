@@ -5,7 +5,7 @@ class InputForm extends Component {
   state = {
     minLength: 1,
     multiple: false,
-    selectHintOnEnter: false,
+    selectHintOnEnter: true,
     emptyLabel: ""
   };
 
@@ -16,15 +16,17 @@ class InputForm extends Component {
         onSubmit={e => {
           e.preventDefault();
           this.props.handleSubmit(e.target.breedName.value);
+          e.target.breedName.value = "";
+          this._typeahead.getInstance().clear();
         }}
       >
         <Typeahead
           {...this.state}
-          inputProps={{name: "breedName"}}
+          inputProps={{ name: "breedName" }}
           options={this.props.breedNames}
           type="text"
-          // name="breedName"
           placeholder="Find a breed to catch"
+          ref={ref => (this._typeahead = ref)}
           onChange={this.props.handleChange}
         />
         <br />

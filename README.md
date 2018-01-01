@@ -21,7 +21,7 @@
 ## Post-MVP
 - Added CSS and some little tweaking to make it more friendly like button shadows.
 - Removed commented out codes and comments. And organized and cleaned up.
-
+- Tested to make sure everything is working.
 
 8 hours total was fair amount of time and it was good enjoyable experience!
 

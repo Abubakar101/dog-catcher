@@ -66,6 +66,7 @@
   border: 2px solid;
   padding: 0px;
   overflow-y: hidden !important;
+  z-index: 10;
 }
 .rbt-menu li {
   padding: 21px 25px;

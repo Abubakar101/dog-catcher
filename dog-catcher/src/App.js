@@ -60,8 +60,8 @@ class App extends Component {
   // Delete Breed
   deleteBreed(e, id) {
     if (e.target.value === "deleteBreed") {
-      let del = this.state.breedData;
-      delete del[id];
+      let del = [...this.state.breedData];
+      del.splice(id, 1);
       this.setState({
         breedData: del
       });

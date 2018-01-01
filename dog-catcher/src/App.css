@@ -22,26 +22,23 @@
   border: none;
 }
 
-/* .userInput input, */
+/* Typehead */
 .userInput .rbt {
   width: 80%;
   border-radius: 5px;
   border: 2px solid;
   padding-left: 20px;
+  padding-right: 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-/* Typehead */
-.userInput .rbt {
   display: flex;
   align-items: center;
 }
+
 .rbt-input-main,
 .rbt-input-hint {
-  width: 230% !important;
   height: 47px;
-  width: 80%;
   border-radius: 5px;
   border: 2px solid;
   font-size: 24px;
@@ -49,6 +46,15 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  width: 100% !important;
+}
+
+.rbt-input {
+  width: 100%;
+}
+
+.rbt-input-wrapper div {
+  display: block !important;
 }
 
 .rbt-sr-status {
@@ -69,11 +75,16 @@
   z-index: 10;
 }
 .rbt-menu li {
-  padding: 21px 25px;
   font-size: 24px;
   letter-spacing: 1px;
   list-style: none;
   border-bottom: 3px solid gray;
+}
+
+.dropdown-item {
+  width: 100%;
+  display: inline-block;
+  padding: 21px 25px;
 }
 
 .rbt-menu .active {
@@ -147,7 +158,8 @@
   border-radius: 5px;
   font-size: 24px;
   letter-spacing: 1px;
-  height: 53px;
+  padding: 0.6vw 0.5vw;
+  height: 100%;
 }
 
 /* Breed Images */
@@ -226,4 +238,10 @@
 .clearBtn:focus,
 .destroyBtn:focus {
   outline: none;
+}
+.userInput button:active,
+.randomBreedBtn:active,
+.clearBtn:active,
+.destroyBtn:active {
+  background: gainsboro;
 }

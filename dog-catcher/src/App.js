@@ -36,9 +36,8 @@ class App extends Component {
   }
 
   handleInputListener(event) {
-    console.log(event.target.value);
     this.setState({
-      inputField: event.target.value
+      inputField: event[0]
     });
   }
 
@@ -58,7 +57,8 @@ class App extends Component {
             i.e., "african", Collie, Coonhound, Cairn & etc 
             
             Or Click on "Catch a Random Breed!!"
-            `);
+            
+            P.S. No after-Spaces`);
     }
   }
 
@@ -83,6 +83,7 @@ class App extends Component {
       <div className="dogContainer">
         <h1 className="MainTitle">Dog Catcher</h1>
         <InputForm
+          breedNames={this.state.breedNames}
           inputField={this.state.inputField}
           handleChange={this.handleInputListener}
           handleSubmit={this.handleSubmitListener}

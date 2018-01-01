@@ -22,7 +22,25 @@
   border: none;
 }
 
-.userInput input {
+/* .userInput input, */
+.userInput .rbt {
+  width: 80%;
+  border-radius: 5px;
+  border: 2px solid;
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* Typehead */
+.userInput .rbt {
+  display: flex;
+  align-items: center;
+}
+.rbt-input-main,
+.rbt-input-hint {
+  width: 230% !important;
+  height: 47px;
   width: 80%;
   border-radius: 5px;
   border: 2px solid;
@@ -31,6 +49,38 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.rbt-sr-status {
+  display: none;
+}
+
+.rbt-menu {
+  max-height: 380px !important;
+  position: absolute;
+  background: white;
+  top: 40px;
+  width: 86%;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border: 2px solid;
+  padding: 0px;
+  overflow-y: hidden !important;
+}
+.rbt-menu li {
+  padding: 21px 25px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  list-style: none;
+  border-bottom: 3px solid gray;
+}
+
+.rbt-menu .active {
+  background: lightgray;
+}
+.rbt-menu li a {
+  text-decoration: none;
+  color: black;
 }
 
 .userInput input:focus {

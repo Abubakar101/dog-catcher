@@ -1,0 +1,228 @@
+/* Main container */
+.dogContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainTitle {
+  font-size: 45px;
+  font-weight: normal;
+}
+
+/* Search Input Field */
+.userInput {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  height: 59px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* .userInput input, */
+.userInput .rbt {
+  width: 80%;
+  border-radius: 5px;
+  border: 2px solid;
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* Typehead */
+.userInput .rbt {
+  display: flex;
+  align-items: center;
+}
+.rbt-input-main,
+.rbt-input-hint {
+  width: 230% !important;
+  height: 47px;
+  width: 80%;
+  border-radius: 5px;
+  border: 2px solid;
+  font-size: 24px;
+  padding-left: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.rbt-sr-status {
+  display: none;
+}
+
+.rbt-menu {
+  max-height: 380px !important;
+  position: absolute;
+  background: white;
+  top: 40px;
+  width: 86%;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border: 2px solid;
+  padding: 0px;
+  overflow-y: hidden !important;
+}
+.rbt-menu li {
+  padding: 21px 25px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  list-style: none;
+  border-bottom: 3px solid gray;
+}
+
+.rbt-menu .active {
+  background: lightgray;
+}
+.rbt-menu li a {
+  text-decoration: none;
+  color: black;
+}
+
+.userInput input:focus {
+  outline: none;
+}
+
+.userInput button {
+  border: 2px solid;
+  border-bottom: 4px solid;
+  font-size: 24px;
+  letter-spacing: 2px;
+  width: 19%;
+  border-radius: 5px;
+}
+
+/* Random Breed Button */
+.randomBreedBtn {
+  border: 2px solid;
+  border-bottom: 4px solid;
+  font-size: 30px;
+  margin: 10px auto;
+  width: 60%;
+  height: 75px;
+  border-radius: 5px;
+}
+
+/* Sub Title */
+.subTitle {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+/* Results */
+
+.breeds {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-height: 601px;
+  margin-bottom: 100px;
+}
+
+.midTopContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0px;
+}
+
+.breedInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.subTitle {
+  margin-right: 18%;
+  align-self: center;
+}
+
+.clearBtn {
+  align-self: center;
+  border: 2px solid;
+  border-bottom: 4px solid;
+  width: 19%;
+  border-radius: 5px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  height: 53px;
+}
+
+/* Breed Images */
+.breedInfoBox {
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+  height: 220px;
+  margin: 5px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  border: 2px solid;
+}
+
+.breedInfoTop {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.breedImages {
+  width: 95%;
+  height: 164px;
+  position: relative;
+}
+.breedImages img {
+  width: 100%;
+  height: 100%;
+}
+
+.destroyBtn {
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  height: 29px;
+  border-radius: 50%;
+  font-size: 23px;
+  border: 1px solid gray;
+  font-weight: normal;
+  padding: 0px;
+}
+
+.breedName {
+  font-size: 24px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  margin: 10px;
+}
+
+/* Empty message */
+.emptyMessageContainer {
+  margin: 0 auto;
+}
+
+.emptyMessage {
+  margin: 0px;
+  text-align: center;
+  font-size: 19px;
+}
+
+/* Extra */
+
+.userInput button:hover,
+.randomBreedBtn:hover,
+.clearBtn:hover,
+.destroyBtn:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+  -moz-transition: box-shadow 0.3s ease-in-out;
+  -webkit-transition: box-shadow 0.3s ease-in-out;
+}
+.userInput button:focus,
+.randomBreedBtn:focus,
+.clearBtn:focus,
+.destroyBtn:focus {
+  outline: none;
+}

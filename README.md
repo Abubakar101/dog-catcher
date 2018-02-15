@@ -28,9 +28,9 @@ You can search breeds by typing their name into search bar - 'typeahead' and and
 8 hours total was fair amount of time and it was good enjoyable experience!
 
 
-## User Stories 
-[wire frame](./Assignment.md)
-
+## User Stories & Wire-frames
+[Click Here to read User Stories](./Assignment.md)
+[Wire Frame](./dogBreedsTest.pdf)
 
 
 

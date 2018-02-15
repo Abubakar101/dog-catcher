@@ -1,5 +1,7 @@
-# SCOIR Technical Interview for Front-End Engineers
-### Dog Catcher
+# Dog Catcher
+
+## Introduction
+You can search breeds by typing their name into search bar - 'typeahead' and and then catch them using "Search" button. Or catch them using a random button. It uses React and third-party API to match the breeds' name.
 
 ## Instructions
 1. Fork and clone this repo.
@@ -26,6 +28,8 @@
 8 hours total was fair amount of time and it was good enjoyable experience!
 
 
+## User Stories 
+[wire frame](./Assignment.md)
 
 
 

@@ -29,8 +29,8 @@ You can search breeds by typing their name into search bar - 'typeahead' and and
 
 
 ## User Stories & Wire-frames
-[Click Here to read User Stories](./Assignment.md)
-[Wire Frame](./dogBreedsTest.pdf)
+- [Click Here to read User Stories](./Assignment.md)
+- [Wire Frame](./dogBreedsTest.pdf)
 
 
 

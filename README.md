@@ -1,7 +1,7 @@
 # Dog Catcher
 
 ## Introduction
-You can search breeds by typing their name into search bar - 'typeahead' and and then catch them using "Search" button. Or catch them using a random button. It uses React and third-party API to match the breeds' name.
+You can search breeds by typing their name into the search bar - 'typeahead' and then catch them using "Search" button. Or catch them using a random button. It uses React and third-party API to match the breeds' name.
 
 ## Instructions
 1. Fork and clone this repo.

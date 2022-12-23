@@ -191,7 +191,7 @@
   height: 100%;
 }
 
-.destroyBtn {
+.deleteBtn {
   position: absolute;
   right: 0px;
   width: 30px;
@@ -226,7 +226,7 @@
 .userInput button:hover,
 .randomBreedBtn:hover,
 .clearBtn:hover,
-.destroyBtn:hover {
+.deleteBtn:hover {
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease-in-out;
@@ -236,12 +236,12 @@
 .userInput button:focus,
 .randomBreedBtn:focus,
 .clearBtn:focus,
-.destroyBtn:focus {
+.deleteBtn:focus {
   outline: none;
 }
 .userInput button:active,
 .randomBreedBtn:active,
 .clearBtn:active,
-.destroyBtn:active {
+.deleteBtn:active {
   background: gainsboro;
 }

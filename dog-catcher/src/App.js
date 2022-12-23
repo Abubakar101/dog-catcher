@@ -1,94 +1,64 @@
-import React, { Component } from "react";
-import InputForm from "./components/Input";
-import BreedFeed from "./components/BreedFeed";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { callBreedApi, getRandomBreedData } from "./lib/utils";
+import AppView from "./components";
 import "./App.css";
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  const [breedNames, setBreedNames] = useState([]);
+  const [breedData, setBreedData] = useState([]);
 
-    this.state = {
-      breedNames: [],
-      breedData: []
+  useEffect(() => {
+    const getBreedLists = async () => {
+      const { message } = await callBreedApi("https://dog.ceo/api/breeds/list");
+      setBreedNames(message);
     };
 
-    this.handleSubmitListener = this.handleSubmitListener.bind(this);
-    this.randomBreed = this.randomBreed.bind(this);
-    this.deleteBreed = this.deleteBreed.bind(this);
-  }
-
-  // Get all the Breed names from API
-  // Set state for later use
-  componentDidMount() {
-    axios("https://dog.ceo/api/breeds/list").then(res => {
-      this.setState({
-        breedNames: res.data.message
-      });
-    });
-  }
-
-  // Random breed and then pass it to API call function - handleSubmitListener()
-  randomBreed() {
-    let breedNamesLength = this.state.breedNames.length;
-    let randomNumber = Math.floor(breedNamesLength * Math.random());
-    let tmpBreedName = this.state.breedNames[randomNumber];
-    this.handleSubmitListener(tmpBreedName);
-  }
+    getBreedLists();
+  }, []);
 
   // Call API dog.ceo with the breed name to get picture
-  handleSubmitListener(value) {
-    value = value
-      .split(" ")
-      .join("")
-      .toLowerCase();
-    if (this.state.breedNames.includes(value)) {
-      axios(`https://dog.ceo/api/breed/${value}/images`).then(res => {
-        this.setState({
-          breedData: [
-            { name: value, images: res.data.message[0] },
-            ...this.state.breedData
-          ]
-        });
-      });
+  const handleSubmit = async (value) => {
+    const searchValue = value.trim();
+    if (breedNames.includes(searchValue)) {
+      const url = `https://dog.ceo/api/breed/${searchValue}/images`;
+      const { message } = await callBreedApi(url);
+      const randomBreedLink = getRandomBreedData(message.length, message);
+      setBreedData((prev) => [
+        { name: searchValue, images: randomBreedLink },
+        ...prev,
+      ]);
     } else {
       alert(`Please type a correct Breed Name!             
-            Or Click on "Catch a Random Breed!!"`);
+              Or Click on "Catch a Random Breed!!"`);
     }
-  }
+  };
+
+  // Random breed and then pass it to API call function - handleSubmit()
+  const getRandomBreed = async () => {
+    const randomBreedName = getRandomBreedData(breedNames.length, breedNames);
+    await handleSubmit(randomBreedName);
+  };
 
   // Delete Breed
-  deleteBreed(e, id) {
-    if (e.target.value === "deleteBreed") {
-      let del = [...this.state.breedData];
+  const deleteBreed = (event, id) => {
+    if (event.target.value === "deleteBreed") {
+      const del = [...breedData];
       del.splice(id, 1);
-      this.setState({
-        breedData: del
-      });
+      setBreedData(del);
     } else {
-      this.setState({
-        breedData: []
-      });
+      setBreedData([]);
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="dogContainer">
-        <h1 className="MainTitle">Dog Catcher</h1>
-        <InputForm
-          breedNames={this.state.breedNames}
-          handleSubmit={this.handleSubmitListener}
-        />
-
-        <button className="randomBreedBtn" onClick={this.randomBreed}>
-          + Catch A Random Breed
-        </button>
-
-        <BreedFeed data={this.state.breedData} destroy={this.deleteBreed} />
-      </div>
-    );
-  }
-}
+  return (
+    <AppView
+      breedNames={breedNames}
+      breedData={breedData}
+      handleSubmit={handleSubmit}
+      getRandomBreed={getRandomBreed}
+      deleteBreed={deleteBreed}
+    />
+  );
+};
 
 export default App;

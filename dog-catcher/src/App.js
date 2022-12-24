@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { callBreedApi, getRandomBreedData } from "./lib/utils";
-import AppView from "./components";
+import BreedFeed from "./components/breedFeed";
+import InputForm from "./components/InputForm";
+import MidContainer from "./components/MidContainer";
 import "./App.css";
 
 const App = () => {
@@ -24,7 +26,7 @@ const App = () => {
       const { message } = await callBreedApi(url);
       const randomBreedLink = getRandomBreedData(message.length, message);
       setBreedData((prev) => [
-        { name: searchValue, images: randomBreedLink },
+        { name: searchValue, imageUrl: randomBreedLink },
         ...prev,
       ]);
     } else {
@@ -49,15 +51,14 @@ const App = () => {
       setBreedData([]);
     }
   };
-
+  console.log("breedData", breedData.length);
   return (
-    <AppView
-      breedNames={breedNames}
-      breedData={breedData}
-      handleSubmit={handleSubmit}
-      getRandomBreed={getRandomBreed}
-      deleteBreed={deleteBreed}
-    />
+    <div className="dogContainer">
+      <h1 className="MainTitle">Dog Catcher</h1>
+      <InputForm breedNames={breedNames} handleSubmit={handleSubmit} />
+      <MidContainer onDelete={deleteBreed} getRandomBreed={getRandomBreed} />
+      <BreedFeed data={breedData} onDelete={deleteBreed} />
+    </div>
   );
 };
 

@@ -1,39 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 
-const InputForm = ({ breedNames, handleChange, handleSubmit }) => {
-  // const [] = useState()
-  // state = {
-  //   // minLength: 1,
-  //   // multiple: false,
-  //   // selectHintOnEnter: true,
-  //   emptyLabel: "",
-  // };
+const InputForm = ({ breedNames, handleSubmit }) => {
+  const ref = createRef();
+  const [inputValue, setInputValue] = useState();
 
   return (
     <form
       className="userInput"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit(e.target.breedName.value);
-        e.target.breedName.value = "";
-        this._typeahead.getInstance().clear();
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleSubmit(inputValue[0] || "");
+        ref.current.clear();
       }}
     >
       <Typeahead
-        // {...this.state}
-        minLength={1}
-        multiple={false}
-        selectHintOnEnter={true}
-        emptyLabel=""
-        inputProps={{ name: "breedName" }}
+        id="typeahead-id"
+        onChange={setInputValue}
         options={breedNames}
-        type="text"
-        placeholder="Find a breed to catch"
-        ref={(ref) => (this._typeahead = ref)}
-        onChange={handleChange}
+        labelKey="name"
+        minLength="1"
+        multiple={false}
+        selectHintOnEnter
+        ref={ref}
       />
-      <br />
 
       <button type="submit" value="submit">
         Search
@@ -41,4 +31,5 @@ const InputForm = ({ breedNames, handleChange, handleSubmit }) => {
     </form>
   );
 };
+
 export default InputForm;

@@ -4,11 +4,11 @@ import BreedInfoBox from "./BreedInfoBox";
 const BreedResults = ({ data, onDelete }) => {
   return (
     <div className="breedInfoContainer">
-      {data.map(({ images, name }, index) => (
+      {data.map(({ imageUrl, name }, index) => (
         <BreedInfoBox
-          key={index}
+          key={`${name}-${imageUrl}-${Date.now()}`}
           id={index}
-          imageUrl={images}
+          imageUrl={imageUrl}
           breedName={name}
           onDelete={onDelete}
         />

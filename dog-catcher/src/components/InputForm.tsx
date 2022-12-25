@@ -1,27 +1,27 @@
-import React, { useState, createRef } from "react";
+import { useState, createRef, Ref } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
+import { InputFormProps } from "../lib/types";
 
-const InputForm = ({ breedNames, handleSubmit }) => {
-  const ref = createRef();
-  const [inputValue, setInputValue] = useState();
+const InputForm = ({ breedNames, handleSubmit }: InputFormProps) => {
+  const ref: any = createRef();
+  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <form
       className="userInput"
       onSubmit={(event) => {
         event.preventDefault();
-        handleSubmit(inputValue[0] || "");
+        handleSubmit(inputValue);
         ref.current.clear();
       }}
     >
       <Typeahead
         id="typeahead-id"
-        onChange={setInputValue}
+        onChange={(option: any) => setInputValue(option)}
         options={breedNames}
         labelKey="name"
-        minLength="1"
+        minLength={1}
         multiple={false}
-        selectHintOnEnter
         ref={ref}
       />
 

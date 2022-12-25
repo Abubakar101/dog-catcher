@@ -1,7 +1,7 @@
-import React from "react";
+import { BreedResultsProps } from "../../lib/types";
 import BreedInfoBox from "./BreedInfoBox";
 
-const BreedResults = ({ data, onDelete }) => {
+const BreedResults = ({ data, onDelete }: BreedResultsProps) => {
   return (
     <div className="breedInfoContainer">
       {data.map(({ imageUrl, name }, index) => (

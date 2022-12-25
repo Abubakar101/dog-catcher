@@ -1,6 +1,11 @@
-import React from "react";
+import { BreedInfoBoxProps } from "../../lib/types";
 
-const BreedInfoBox = ({ imageUrl, breedName, onDelete, id }) => {
+const BreedInfoBox = ({
+  imageUrl,
+  breedName,
+  onDelete,
+  id,
+}: BreedInfoBoxProps) => {
   return (
     <div className="breedInfoBox">
       <div className="breedInfoTop">

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { callBreedApi, getRandomBreedData } from "./lib/utils";
+import { CallBreedApi, getRandomBreedData } from "./lib/utils";
 import BreedFeed from "./components/breedFeed";
 import InputForm from "./components/InputForm";
 import MidContainer from "./components/MidContainer";
+import { BreedData, DeleteBreedFunc } from "./lib/types";
 import "./App.css";
 
 const App = () => {
-  const [breedNames, setBreedNames] = useState([]);
-  const [breedData, setBreedData] = useState([]);
+  const [breedNames, setBreedNames] = useState<string[]>([]);
+  const [breedData, setBreedData] = useState<BreedData[]>([]);
 
   useEffect(() => {
     const getBreedLists = async () => {
-      const { message } = await callBreedApi("https://dog.ceo/api/breeds/list");
+      const { message } = await CallBreedApi("https://dog.ceo/api/breeds/list");
       setBreedNames(message);
     };
 
@@ -19,11 +20,11 @@ const App = () => {
   }, []);
 
   // Call API dog.ceo with the breed name to get picture
-  const handleSubmit = async (value) => {
+  const handleSubmit = async (value: string) => {
     const searchValue = value.trim();
     if (breedNames.includes(searchValue)) {
       const url = `https://dog.ceo/api/breed/${searchValue}/images`;
-      const { message } = await callBreedApi(url);
+      const { message } = await CallBreedApi(url);
       const randomBreedLink = getRandomBreedData(message.length, message);
       setBreedData((prev) => [
         { name: searchValue, imageUrl: randomBreedLink },
@@ -42,8 +43,9 @@ const App = () => {
   };
 
   // Delete Breed
-  const deleteBreed = (event, id) => {
-    if (event.target.value === "deleteBreed") {
+  const deleteBreed: DeleteBreedFunc = (event, id) => {
+    const target = event.target as HTMLButtonElement;
+    if (target.value === "deleteBreed") {
       const del = [...breedData];
       del.splice(id, 1);
       setBreedData(del);
@@ -51,7 +53,7 @@ const App = () => {
       setBreedData([]);
     }
   };
-  console.log("breedData", breedData.length);
+
   return (
     <div className="dogContainer">
       <h1 className="MainTitle">Dog Catcher</h1>
